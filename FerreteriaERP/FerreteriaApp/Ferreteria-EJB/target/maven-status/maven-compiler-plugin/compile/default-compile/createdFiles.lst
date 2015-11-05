@@ -1,0 +1,8 @@
+com/co/ferreteria/view/boundary/producto/ProductoViewBoundary.class
+com/co/ferreteria/view/boundary/parametros/ParametrosViewBoundary.class
+com/co/ferreteria/view/boundary/seguridad/MenuViewBoundary.class
+com/co/ferreteria/transaccional/boundary/ventas/VentasTransaccionalBoundary.class
+com/co/ferreteria/transaccional/boundary/producto/ProductoTransaccionalBoundary.class
+com/co/ferreteria/view/boundary/ventas/VentasViewBoundary.class
+com/co/ferreteria/NewSessionBean.class
+com/co/ferreteria/transaccional/boundary/parametros/ParametrosTransaccionalBoundary.class
