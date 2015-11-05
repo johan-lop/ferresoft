@@ -312,7 +312,7 @@
                                                                                  actionListener="#{ventaController.limpiarVenta()}" update="@form"
                                                                                  rendered="#{ventaController.venta.id ne null}"/> 
 
-                                                                <h:commandButton value="Imprimir Factura" id="generarVenta"                                                                                 
+                                                                <h:commandButton value="Imprimir" id="generarVenta"  rendered="#{ventaController.venta.id ne null and ventaController.venta.tipoVentaDto.id ne 1}"                                                                                
                                                                                  actionListener="#{ventaController.imprimePdf()}" />
                                                             </div>
                                                         </div>

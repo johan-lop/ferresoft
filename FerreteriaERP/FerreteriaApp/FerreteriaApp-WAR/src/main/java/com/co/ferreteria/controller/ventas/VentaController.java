@@ -207,15 +207,19 @@ public class VentaController implements Serializable {
         ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
         HttpServletResponse response = (HttpServletResponse) ec.getResponse();
         final Map parametros = new HashMap();
-        
+
         try {
-            parametros.put("VENTA_ID", 34);
+            parametros.put("VENTA_ID", this.venta.getId());
             parametros.put("ES_COPIA", false);
             JasperPrint printer = new JasperPrint();
             InputStream inputStream = null;
             try {
                 ServletContext servletContext = (ServletContext) ec.getContext();
-                inputStream = new FileInputStream(servletContext.getRealPath("/reportes/facturaVenta.jasper"));
+                if (this.venta.getTipoVentaDto().getId() == 3) {
+                    inputStream = new FileInputStream(servletContext.getRealPath("/reportes/facturaVenta.jasper"));
+                } else if (this.venta.getTipoVentaDto().getId() == 2) {
+                    inputStream = new FileInputStream(servletContext.getRealPath("/reportes/remision.jasper"));
+                }
                 printer = JasperFillManager.fillReport(inputStream, parametros, this.parametrosFacade.obtenerConexion());
             } catch (Exception e) {
                 System.err.println("Error " + e.getMessage());
@@ -224,7 +228,7 @@ public class VentaController implements Serializable {
 
             final ServletOutputStream servletOutputStream = response.getOutputStream();
             JasperExportManager.exportReportToPdfStream(printer, servletOutputStream);
-            FacesContext.getCurrentInstance().responseComplete();            
+            FacesContext.getCurrentInstance().responseComplete();
         } catch (final Exception e) {
             System.err.println("Error" + e.getMessage());
 
