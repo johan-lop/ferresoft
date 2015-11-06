@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Remision" pageWidth="421" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="381" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e568485c-c5a6-4cb7-9fb7-796625265b3e">
 	<property name="ireport.zoom" value="1.8660295208389333"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="37"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -203,7 +203,7 @@
 			<pen lineWidth="0.5" lineColor="#000000"/>
 		</box>
 	</style>
-	<parameter name="VENTA_ID" class="java.lang.Integer"/>
+	<parameter name="VENTA_ID" class="java.lang.Long"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["/home/johan/NetBeansProjects/Ferresoft/FerreteriaERP/FerreteriaApp/FerreteriaApp-WAR/src/main/webapp/reportes/"]]></defaultValueExpression>
 	</parameter>
@@ -357,16 +357,6 @@ where v.id = $P{VENTA_ID}]]>
 			</frame>
 			<frame>
 				<reportElement mode="Transparent" x="191" y="14" width="95" height="14" backcolor="#E6E6E6" uuid="27db3b53-ca69-47f1-ad70-c114a7492756"/>
-				<box>
-					<pen lineWidth="0.5"/>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-			</frame>
-			<frame>
-				<reportElement mode="Transparent" x="191" y="28" width="95" height="14" backcolor="#E6E6E6" uuid="86e9bc40-fac9-41a2-9c79-cace3a322985"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -552,15 +542,7 @@ Num. Autorizada del 3501 al 6000]]></text>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="8" isBold="false"/>
 				</textElement>
-				<text><![CDATA[Fecha Factura:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="191" y="28" width="95" height="14" uuid="cd44d06e-388d-4cb9-b612-f3b44a01d9ae"/>
-				<box rightPadding="5"/>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8" isBold="false"/>
-				</textElement>
-				<text><![CDATA[Fecha Vencimiento:]]></text>
+				<text><![CDATA[Fecha Remisión:]]></text>
 			</staticText>
 			<textField>
 				<reportElement mode="Transparent" x="286" y="14" width="95" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="f2e72984-4084-4e7c-a0b8-2ed7648d23cf"/>
@@ -576,21 +558,6 @@ Num. Autorizada del 3501 al 6000]]></text>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fecha_factura}]]></textFieldExpression>
-			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement mode="Transparent" x="286" y="28" width="95" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="713dd9bc-b1b3-4c14-8f75-216d34d533fe"/>
-				<box leftPadding="5" bottomPadding="0">
-					<pen lineWidth="0.5"/>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
-					<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{fecha_vencimiento}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement mode="Transparent" x="251" y="58" width="130" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="f760ec61-8ad1-4b1a-9197-5ac72a8b841b"/>

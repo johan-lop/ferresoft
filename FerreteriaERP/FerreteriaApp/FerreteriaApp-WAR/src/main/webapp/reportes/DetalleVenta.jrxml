@@ -3,7 +3,7 @@
 	<property name="ireport.zoom" value="2.143588810000002"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<parameter name="VENTA_ID" class="java.lang.Integer"/>
+	<parameter name="VENTA_ID" class="java.lang.Long"/>
 	<queryString>
 		<![CDATA[select p.descripcion, dv.cantidad,dv.precio,dv.total from transaccional.detalle_venta dv
 inner join transaccional.venta v 

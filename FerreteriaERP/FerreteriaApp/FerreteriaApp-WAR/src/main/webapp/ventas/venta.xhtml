@@ -64,7 +64,7 @@
                                         <h:outputText value="#{producto.marcaDto.descripcion}" />
                                     </p:column>
                                     <p:column style="text-align: center; width:80px">
-                                        <p:commandButton  icon="fa fa-plus" title="Agregar"
+                                        <p:commandButton  icon="fa fa-plus" title="Agregar" 
                                                           actionListener="#{ventaController.agregarProducto(producto)}"
                                                           update="form:tblFactura">
 
@@ -116,7 +116,7 @@
                                                         </p:inputText>                                                                                                
                                                     </p:column>
                                                     <p:column style="text-align: center;width: 50px">
-                                                        <p:commandButton  icon="fa fa-times" title="Quitar" update="tblFactura"
+                                                        <p:commandButton  icon="fa fa-times" title="Quitar" update="tblFactura" 
                                                                           actionListener="#{ventaController.eliminarDetalle(detalle)}">
                                                         </p:commandButton>
                                                     </p:column>
@@ -207,14 +207,14 @@
                                                             <div class="ui-grid-col-7" >
                                                                 <p:selectOneMenu id="tipoPago" style="width: 100%" widgetVar="wvTipoPago"
                                                                                  value="#{ventaController.venta.tipoPagoDto}"
-                                                                                 converter="omnifaces.SelectItemsConverter" immediate="true" 
+                                                                                 converter="omnifaces.SelectItemsConverter"  
                                                                                  >
+                                                                    <p:ajax update="form:panelInformacionAdicional, form:tblFactura" listener="#{ventaController.calculaTotal()}"/>
                                                                     <f:selectItems value="#{ventaController.tiposPago}"
                                                                                    var="tipoPago" 
                                                                                    itemLabel="#{tipoPago.descripcion}"
                                                                                    itemValue="#{tipoPago}" />
-                                                                    <p:ajax event="change" update="form:panelInformacionAdicional, form:tblFactura" 
-                                                                            listener="#{ventaController.calculaTotal()}"/>
+
                                                                 </p:selectOneMenu> 
                                                             </div>
                                                         </div>
@@ -227,7 +227,7 @@
                                                                 </div>
                                                                 <div class="ui-grid-col-7" >
                                                                     <p:inputText value="#{ventaController.venta.numeroFactura}" style="width: 100%" 
-                                                                                 id="numeroFactura" />
+                                                                                 id="numeroFactura" required="true" requiredMessage="El numero de factura es obligatorio"/>
                                                                 </div>
                                                             </div>
                                                         </div>   
@@ -239,7 +239,8 @@
                                                                     <h:outputText value="No. Remisión:" />
                                                                 </div>
                                                                 <div class="ui-grid-col-7" >
-                                                                    <p:inputText value="#{ventaController.venta.numeroRemision}" style="width: 100%"/>
+                                                                    <p:inputText value="#{ventaController.venta.numeroRemision}" style="width: 100%"
+                                                                                 required="true" requiredMessage="El numero de remisión es obligatorio"/>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -268,7 +269,7 @@
                                                                 <div class="ui-grid-col-7 text-right" >
                                                                     <p:inputText value="#{ventaController.cliente.nombre}" style="width: 80%" id="clienteVenta"/>
                                                                     <p:commandButton  icon="fa fa-search" title="Buscar Cliente" onclick="PF('dlgCliente').show()"
-                                                                                      style="width: 15%" >
+                                                                                      style="width: 15%" immediate="true">
                                                                     </p:commandButton>                                                            
                                                                 </div>
                                                             </div>
@@ -278,7 +279,7 @@
                                                         <div class="ui-grid ui-grid-responsive">
                                                             <div class="ui-grid-row">
                                                                 <div class="ui-grid-col-5 text-right" >
-                                                                    <h:outputText value="Fecha factura:" />
+                                                                    <h:outputText value="Fecha:" />
                                                                 </div>
                                                                 <div class="ui-grid-col-7 text-right" >
                                                                     <p:calendar showOn="button" value="#{ventaController.venta.fechaFactura}"/>
@@ -311,8 +312,8 @@
                                                                                  icon="fa fa-file-o" iconPos="left" styleClass="btn btn-sm btn-info"
                                                                                  actionListener="#{ventaController.limpiarVenta()}" update="@form"
                                                                                  rendered="#{ventaController.venta.id ne null}"/> 
-
-                                                                <h:commandButton value="Imprimir" id="generarVenta"  rendered="#{ventaController.venta.id ne null and ventaController.venta.tipoVentaDto.id ne 1}"                                                                                
+                                                                &#160;
+                                                                <h:commandButton value=" Imprimir " id="generarVenta"  rendered="#{ventaController.venta.id ne null and ventaController.venta.tipoVentaDto.id ne 1}"                                                                                
                                                                                  actionListener="#{ventaController.imprimePdf()}" />
                                                             </div>
                                                         </div>

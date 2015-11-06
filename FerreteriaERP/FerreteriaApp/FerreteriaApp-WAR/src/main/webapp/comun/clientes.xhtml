@@ -188,7 +188,7 @@
         <div class="ui-grid-row">
             <div class="ui-grid-col-12 text-right" >
                 <p:commandButton value="Cancelar" styleClass="btn btn-sm btn-danger"
-                                 icon="fa fa-close" iconPos="left"
+                                 icon="fa fa-close" iconPos="left" immediate="true"
                                  ajax="true" onclick="PF('dlgCliente').hide()" 
                                  />
                 <p:commandButton value="Limpiar" styleClass="btn btn-sm btn-info"
@@ -203,7 +203,7 @@
                                  />
                 <p:commandButton value="Seleccionar" styleClass="btn btn-sm btn-primary"
                                  icon="fa fa-check" iconPos="left" update="form:clienteVenta"
-                                 oncomplete="PF('dlgCliente').hide()"
+                                 oncomplete="PF('dlgCliente').hide()" 
                                  ajax="true" actionListener="#{ventaController.seleccionarCliente()}"
                                  />
             </div>
