@@ -1,7 +1,0 @@
-com/co/ferreteria/controller/producto/EditarProductoController.class
-com/co/ferreteria/facade/parametros/ParametrosFacade.class
-com/co/ferreteria/facade/producto/ProductoFacade.class
-com/co/ferreteria/facade/ventas/VentasFacade.class
-com/co/ferreteria/controller/parametros/MenuController.class
-com/co/ferreteria/controller/ventas/VentaController.class
-com/co/ferreteria/controller/comun/ClienteController.class
