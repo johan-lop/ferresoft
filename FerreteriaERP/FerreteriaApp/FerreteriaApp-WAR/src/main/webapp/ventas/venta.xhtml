@@ -172,7 +172,7 @@
                                                                     </p:inputText>
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                        </div>                                                        
                                                     </f:facet>
                                                 </p:dataTable>
                                             </div>
@@ -312,9 +312,8 @@
                                                                                  icon="fa fa-file-o" iconPos="left" styleClass="btn btn-sm btn-info"
                                                                                  actionListener="#{ventaController.limpiarVenta()}" update="@form"
                                                                                  rendered="#{ventaController.venta.id ne null}"/> 
-                                                                &#160;
                                                                 <h:commandButton value=" Imprimir " id="generarVenta"  rendered="#{ventaController.venta.id ne null and ventaController.venta.tipoVentaDto.id ne 1}"                                                                                
-                                                                                 actionListener="#{ventaController.imprimePdf()}" />
+                                                                                 actionListener="#{ventaController.imprimePdf()}" style="margin-left: 10px"/>
                                                             </div>
                                                         </div>
                                                     </div>

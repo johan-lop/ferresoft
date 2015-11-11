@@ -138,7 +138,6 @@ public class VentaController implements Serializable {
         this.venta.setSubTotal(0.0);
         this.venta.setTotalIva(0.0);
         this.venta.setTotalImporte(0.0);
-        System.err.println(this.venta.getTipoPagoDto().getImporte());
         for (DetalleVentaDto detalle : detalleVenta) {
             Double importe = (this.venta.getTipoPagoDto().getImporte() * detalle.getTotal()) / 100;
             this.venta.setSubTotal(this.venta.getSubTotal() + detalle.getTotal());
@@ -204,38 +203,8 @@ public class VentaController implements Serializable {
     }
 
     public void imprimePdf() {
-        ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-        HttpServletResponse response = (HttpServletResponse) ec.getResponse();
-        final Map parametros = new HashMap();
-
-        try {
-            parametros.put("VENTA_ID", this.venta.getId());
-            parametros.put("ES_COPIA", false);
-            JasperPrint printer = new JasperPrint();
-            InputStream inputStream = null;
-            String nombre = "";
-            try {
-                ServletContext servletContext = (ServletContext) ec.getContext();
-                if (this.venta.getTipoVentaDto().getId() == 3) {
-                    inputStream = new FileInputStream(servletContext.getRealPath("/reportes/facturaVenta.jasper"));
-                    nombre = "FacturaVentaNo_" + this.venta.getNumeroFactura();
-                } else if (this.venta.getTipoVentaDto().getId() == 2) {
-                    inputStream = new FileInputStream(servletContext.getRealPath("/reportes/remision.jasper"));
-                     nombre = "RemisionNo_" + this.venta.getNumeroRemision();
-                }
-                printer = JasperFillManager.fillReport(inputStream, parametros, this.parametrosFacade.obtenerConexion());
-            } catch (Exception e) {
-                System.err.println("Error " + e.getMessage());
-            }
-            response.addHeader("Content-disposition", "attachment; filename=" + nombre + ".pdf");
-
-            final ServletOutputStream servletOutputStream = response.getOutputStream();
-            JasperExportManager.exportReportToPdfStream(printer, servletOutputStream);
-            FacesContext.getCurrentInstance().responseComplete();
-        } catch (final Exception e) {
-            System.err.println("Error" + e.getMessage());
-
-        }
+        this.ventasFacade.imprimePdf(this.venta.getId(), this.venta.getTipoVentaDto(), false, 
+                this.venta.getNumeroRemision(), this.venta.getNumeroFactura());        
     }
 
     /**

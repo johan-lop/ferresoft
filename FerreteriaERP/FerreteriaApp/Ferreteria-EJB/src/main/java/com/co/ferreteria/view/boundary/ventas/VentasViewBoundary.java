@@ -2,6 +2,7 @@ package com.co.ferreteria.view.boundary.ventas;
 
 import com.co.ferreteria.definitions.view.ventas.VentasViewLocal;
 import com.co.ferreteria.ferresoft.dto.maestro.ClienteDto;
+import com.co.ferreteria.ferresoft.dto.transaccional.VentaDto;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -28,22 +29,35 @@ public class VentasViewBoundary implements VentasViewLocal {
                 + "c.nombre, mun.departamentoId.id, mun.departamentoId.descripcion, mun.id, "
                 + "mun.descripcion, td.id, td.descripcion, c.numeroDocumento, c.direccion, c.telefono, c.celular, c.contacto) "
                 + "from Cliente c join c.tipoDocumento td join c.municipio mun where UPPER(c.nombre) like "
-                + " :nombre ");              
+                + " :nombre ");
         if (cliente.getNumeroIdentificacion() != null && !"".equals(cliente.getNumeroIdentificacion())) {
             sb.append(" and c.numeroDocumento = :numeroDocumento ");
         }
         if (cliente.getTipoIdentificacion() != null) {
             sb.append(" and td.id = :tipoDocumento ");
         }
-        Query query = em.createQuery(sb.toString(), ClienteDto.class).setParameter("nombre", "%" + 
-                cliente.getNombre().toUpperCase() + "%");
+        Query query = em.createQuery(sb.toString(), ClienteDto.class).setParameter("nombre", "%"
+                + cliente.getNombre().toUpperCase() + "%");
         if (cliente.getNumeroIdentificacion() != null && !"".equals(cliente.getNumeroIdentificacion())) {
             query.setParameter("numeroDocumento", cliente.getNumeroIdentificacion());
         }
         if (cliente.getTipoIdentificacion() != null) {
             query.setParameter("tipoDocumento", cliente.getTipoIdentificacion().getId());
         }
-       
+
+        return query.getResultList();
+    }
+
+    @Override
+    public List<VentaDto> listarVentas() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("select new com.co.ferreteria.ferresoft.dto.transaccional.VentaDto(v.id,v.tipoVenta.descripcion, ");
+        sb.append("v.tipoVenta.id, v.numeroFactura, v.numeroRemision, v.tipoPago.descripcion, v.fechaFactura, ");
+        sb.append("v.fechaVencimiento, v.totalIva, v.total)");
+        sb.append(" from Venta v ");
+        
+        Query query = em.createQuery(sb.toString(), VentaDto.class);     
+
         return query.getResultList();
     }
 

@@ -9,13 +9,13 @@
             Historial Ventas
         </ui:define>
         <ui:define name="content">
-            
+
             <h:form id="form">
                 <p:panel id="panelFiltros">
                     <div class="ui-grid ui-grid-responsive">
                         <div class="ui-grid-row">
                             <div class="ui-grid-col-12" >
-                               
+
                             </div>
                         </div>
                     </div>                   
@@ -24,7 +24,45 @@
                     <div class="ui-grid ui-grid-responsive">
                         <div class="ui-grid-row">
                             <div class="ui-grid-col-12" >
-                               
+                                <p:dataTable id="tblHistorial" widgetVar="facturaTable"  
+                                             value="#{historialVentasController.ventas}" var="venta" >
+                                    <p:column headerText="Tipo Venta">
+                                        <h:outputText value="#{venta.tipoVentaDto.descripcion}" style="width:96%" />
+                                    </p:column>
+                                    <p:column headerText="Numero">
+                                        <h:outputText value="#{venta.numeroFactura}#{venta.numeroRemision}" style="width:96%" />
+                                    </p:column>
+                                    <p:column headerText="Tipo Pago">
+                                        <h:outputText value="#{venta.tipoPagoDto.descripcion}" style="width:96%" />
+                                    </p:column>
+                                    <p:column headerText="Fecha">
+                                        <h:outputText value="#{venta.fechaFactura}" style="width:96%" />
+                                    </p:column>
+                                    <p:column headerText="Fecha Vencimiento">
+                                        <h:outputText value="#{venta.fechaVencimiento}" style="width:96%" />
+                                    </p:column>
+                                    <p:column headerText="Total Iva">
+                                        <h:outputText value="#{venta.totalIva}" style="width:96%" />
+                                    </p:column>
+                                    <p:column headerText="Total">
+                                        <h:outputText value="#{venta.total}" style="width:96%" />
+                                    </p:column>
+                                    <p:column headerText="Total">
+                                        <h:outputText value="#{venta.total}" style="width:96%" />
+                                    </p:column>
+                                    <p:column headerText="Imprimr" class="text-center">
+                                        <h:commandButton  title="Imprimir" rendered="#{venta.tipoVentaDto.id ne 1}"
+                                                          actionListener="#{historialVentasController.imprimePdf(false, venta)}">
+                                            <i class="fa fa-print"></i> 
+                                        </h:commandButton>
+                                        <h:commandButton  title="Imprimir Copia" style="background-color: #FAAC58; 
+                                                          margin-left: 10px;color: #FFFFFF" rendered="#{venta.tipoVentaDto.id ne 1}"
+                                                          actionListener="#{historialVentasController.imprimePdf(true, venta)}">
+                                            <i class="fa fa-print"></i> 
+                                        </h:commandButton>                                        
+                                       
+                                    </p:column>
+                                </p:dataTable>
                             </div>
                         </div>
                     </div>                   

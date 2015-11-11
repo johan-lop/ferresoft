@@ -1,9 +1,13 @@
 package com.co.ferreteria.controller.ventas;
 
+import com.co.ferreteria.facade.ventas.VentasFacade;
+import com.co.ferreteria.ferresoft.dto.transaccional.VentaDto;
 import com.ocpsoft.pretty.faces.annotation.URLMapping;
 import java.io.Serializable;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
@@ -17,10 +21,27 @@ public class HistorialVentasController implements Serializable {
 
     private static final long serialVersionUID = 1L;    
 
+    @Inject
+    private VentasFacade ventasFacade;
+    
+    private List<VentaDto> ventas;
+    
     @PostConstruct
     public void init() {
-        
+        this.ventas = ventasFacade.listarVentas();
     }
 
-   
+    public void imprimePdf(final boolean esCopia, final VentaDto venta) {
+        ventasFacade.imprimePdf(venta.getId(), venta.getTipoVentaDto(), esCopia, 
+                venta.getNumeroRemision(), venta.getNumeroFactura());
+    }
+    
+    public List<VentaDto> getVentas() {
+        return ventas;
+    }
+
+    public void setVentas(List<VentaDto> ventas) {
+        this.ventas = ventas;
+    }
+    
 }

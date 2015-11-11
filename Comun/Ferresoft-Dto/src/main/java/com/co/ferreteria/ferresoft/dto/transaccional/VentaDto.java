@@ -15,7 +15,7 @@ import java.util.List;
 public class VentaDto implements Serializable {
 
     private Long id;
-    
+
     private Integer numeroFactura;
 
     private Integer numeroRemision;
@@ -29,20 +29,40 @@ public class VentaDto implements Serializable {
     private Double total;
 
     private Double totalIva;
-    
+
     private ClienteDto clienteDto;
-    
+
     private TipoVentaDto tipoVentaDto;
-    
+
     private TipoPagoDto tipoPagoDto;
-    
+
     private Date fechaFactura;
-    
+
     private Date fechaVencimiento;
-    
+
     private Double totalImporte;
 
     public VentaDto() {
+    }
+
+    public VentaDto(final Long id, final String tipoVenta, final Long tipoVentaId, final Integer numeroFactura, 
+            final Integer numeroRemision, final String tipoPag, 
+            final Date fechaFactura, final Date fechaVencimiento, 
+            final Double totalIva, final Double total) {
+        this.id = id;
+        TipoVentaDto tipoVen = new TipoVentaDto();
+        tipoVen.setDescripcion(tipoVenta);
+        tipoVen.setId(tipoVentaId);
+        this.tipoVentaDto = tipoVen;
+        this.numeroFactura = numeroFactura;
+        this.numeroRemision = numeroRemision;        
+        TipoPagoDto tipoPago = new TipoPagoDto();
+        tipoPago.setDescripcion(tipoPag);
+        this.tipoPagoDto = tipoPago;
+        this.fechaFactura = fechaFactura;
+        this.fechaVencimiento = fechaVencimiento;
+        this.totalIva = totalIva;
+        this.total = total;
     }
 
     public Integer getNumeroFactura() {
