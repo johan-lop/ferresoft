@@ -1,0 +1,37 @@
+<div xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:ui="http://java.sun.com/jsf/facelets"
+     xmlns:p="http://primefaces.org/ui"
+     class="page-sidebar sidebar-fixed" id="sidebar">
+    <h:form>
+       <ul class="nav sidebar-menu">
+            <li>
+                <p:link href="/">
+                    <i class="menu-icon fa fa-home"/>
+                    <span class="menu-text"> Inicio </span>
+                </p:link>
+            </li>
+            
+            <ui:repeat value="#{menuController.menu.items}" var="submenu">
+                <li class="#{submenu.activo ? 'open' : ''}">
+                    <a href="#" class="menu-dropdown">
+                        <i class="menu-icon"/>
+                        <span class="menu-text">
+                            #{submenu.titulo}
+                        </span>
+                        <i class="menu-expand"/>
+                    </a>
+                    <ul class="submenu" style="#{submenu.activo ? 'display:block' : ''}">
+                        <ui:repeat value="#{submenu.items}" var="item">
+                            <li class="#{item.activo ? 'active' : ''}">
+                                <h:commandLink action="#{menuController.navigate(item)}">
+                                    <span class="menu-text">#{item.titulo}</span>
+                                </h:commandLink>
+                            </li>
+                        </ui:repeat>
+                    </ul>
+                </li>
+            </ui:repeat>
+        </ul>   
+    </h:form>
+</div>
