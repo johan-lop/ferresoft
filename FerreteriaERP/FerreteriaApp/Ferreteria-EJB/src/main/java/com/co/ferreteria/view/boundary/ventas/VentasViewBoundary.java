@@ -49,15 +49,38 @@ public class VentasViewBoundary implements VentasViewLocal {
     }
 
     @Override
-    public List<VentaDto> listarVentas() {
+    public List<VentaDto> listarVentas(final VentaDto filtroVenta) {
         StringBuilder sb = new StringBuilder();
         sb.append("select new com.co.ferreteria.ferresoft.dto.transaccional.VentaDto(v.id,v.tipoVenta.descripcion, ");
         sb.append("v.tipoVenta.id, v.numeroFactura, v.numeroRemision, v.tipoPago.descripcion, v.fechaFactura, ");
         sb.append("v.fechaVencimiento, v.totalIva, v.total)");
-        sb.append(" from Venta v ");
+        sb.append(" from Venta v where '' = '' ");
+        if (filtroVenta.getTipoVentaDto() != null) {
+            sb.append(" and  v.tipoVenta.id = :tipoVenta ");
+        }
         
-        Query query = em.createQuery(sb.toString(), VentaDto.class);     
+        if (filtroVenta.getFechaInicio() != null ) {
+            sb.append(" and  v.fechaFactura between :fechaInicio and :fechaFin ");
+        }
+        
+        if (filtroVenta.getFechaInicioVencimiento() != null ) {
+            sb.append(" and  v.fechaVencimiento between :fechaInicioVencimiento and :fechaFinVencimiento ");
+        }
+        
+        Query query = em.createQuery(sb.toString(), VentaDto.class);
+        if (filtroVenta.getTipoVentaDto() != null) {
+            query.setParameter("tipoVenta", filtroVenta.getTipoVentaDto().getId());
+        }
 
+        if (filtroVenta.getFechaInicio() != null ) {
+            query.setParameter("fechaInicio", filtroVenta.getFechaInicio());
+            query.setParameter("fechaFin", filtroVenta.getFechaFin());
+        }
+        
+        if (filtroVenta.getFechaInicioVencimiento()!= null ) {
+            query.setParameter("fechaInicioVencimiento", filtroVenta.getFechaInicioVencimiento());
+            query.setParameter("fechaFinVencimiento", filtroVenta.getFechaFinVencimiento());
+        }
         return query.getResultList();
     }
 

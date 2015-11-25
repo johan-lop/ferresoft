@@ -57,8 +57,8 @@ public class VentasFacade implements Serializable {
         return this.ventasService.guardarVenta(venta);
     }
     
-    public List<VentaDto> listarVentas() {
-        return this.ventasViewService.listarVentas();
+    public List<VentaDto> listarVentas(final VentaDto filtroVenta) {
+        return this.ventasViewService.listarVentas(filtroVenta);
     }
     
     public void imprimePdf(final Long ventaId, final TipoVentaDto tipoVentaDto, final boolean esCopia,

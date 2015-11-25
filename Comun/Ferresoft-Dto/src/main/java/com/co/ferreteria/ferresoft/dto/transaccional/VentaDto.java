@@ -42,6 +42,14 @@ public class VentaDto implements Serializable {
 
     private Double totalImporte;
 
+    private Date fechaInicio;
+    
+    private Date fechaFin;
+
+    private Date fechaInicioVencimiento;
+    
+    private Date fechaFinVencimiento;
+    
     public VentaDto() {
     }
 
@@ -176,4 +184,46 @@ public class VentaDto implements Serializable {
     public void setTotalImporte(Double totalImporte) {
         this.totalImporte = totalImporte;
     }
+
+    public Date getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+        if (this.fechaFin == null) {
+            this.setFechaFin(new Date());
+            System.err.println(this.fechaFin);
+        }
+    }
+
+    public Date getFechaFin() {
+        return fechaFin;
+    }
+
+    public void setFechaFin(Date fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
+    public Date getFechaInicioVencimiento() {
+        return fechaInicioVencimiento;
+    }
+
+    public void setFechaInicioVencimiento(Date fechaInicioVencimiento) {
+        this.fechaInicioVencimiento = fechaInicioVencimiento;
+        if (this.fechaFinVencimiento == null) {
+            this.setFechaFinVencimiento(new Date());
+            System.err.println(this.fechaFinVencimiento);
+        }
+    }
+
+    public Date getFechaFinVencimiento() {
+        return fechaFinVencimiento;
+    }
+
+    public void setFechaFinVencimiento(Date fechaFinVencimiento) {
+        this.fechaFinVencimiento = fechaFinVencimiento;
+    }
+    
+    
 }

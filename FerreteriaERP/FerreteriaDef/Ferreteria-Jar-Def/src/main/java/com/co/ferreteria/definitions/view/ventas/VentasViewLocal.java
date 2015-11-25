@@ -14,6 +14,6 @@ public interface VentasViewLocal {
     
   List<ClienteDto> buscarClientes(final ClienteDto cliente);
   
-  List<VentaDto> listarVentas();
+  List<VentaDto> listarVentas(final VentaDto filtroVenta);
    
 }

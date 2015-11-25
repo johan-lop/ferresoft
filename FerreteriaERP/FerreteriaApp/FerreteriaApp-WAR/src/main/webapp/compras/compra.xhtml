@@ -6,7 +6,7 @@
         >
     <ui:composition template="/template/inner.xhtml">
         <ui:define name="title">
-            Venta
+            Factura Compra
         </ui:define>
         <ui:define name="content">
             <style>
@@ -48,11 +48,11 @@
                                     <p:column headerText="Nombre">
                                         <h:outputText value="#{producto.descripcion}" />
                                     </p:column>
-                                    <p:column headerText="Costo">
-                                        <h:outputText value="#{producto.costo}" />
-                                    </p:column>
                                     <p:column headerText="Precio">
                                         <h:outputText value="#{producto.precio}" />
+                                    </p:column>
+                                    <p:column headerText="Costo">
+                                        <h:outputText value="#{producto.costo}" />
                                     </p:column>
                                     <p:column headerText="Stock">
                                         <h:outputText value="#{producto.stock}" />

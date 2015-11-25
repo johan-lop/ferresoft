@@ -13,19 +13,107 @@
             <h:form id="form">
                 <p:panel id="panelFiltros">
                     <div class="ui-grid ui-grid-responsive">
-                        <div class="ui-grid-row">
-                            <div class="ui-grid-col-12" >
-
+                        <div class="ui-grid-row">                            
+                            <div class="ui-grid-col-2 text-right">
+                                <p:outputLabel value="Tipo Venta:" style="width:96%" />
+                            </div>
+                            <div class="ui-grid-col-3">
+                                <p:selectOneMenu id="tipoVenta" style="width: 100%" widgetVar="wvTipoVenta"
+                                                 value="#{historialVentasController.filtroVenta.tipoVentaDto}"
+                                                 converter="omnifaces.SelectItemsConverter" immediate="true" >
+                                    <p:ajax update="form" />
+                                    <f:selectItem itemLabel="Seleccione" itemValue="#{null}" noSelectionOption="true" />
+                                    <f:selectItems value="#{historialVentasController.tiposVenta}"
+                                                   var="tipoVenta" 
+                                                   itemLabel="#{tipoVenta.descripcion}"
+                                                   itemValue="#{tipoVenta}"/>                                        
+                                </p:selectOneMenu> 
+                            </div>
+                            <h:panelGroup rendered="#{historialVentasController.filtroVenta.tipoVentaDto.id eq 2}">
+                                <div class="ui-grid-col-2 text-right">
+                                    <p:outputLabel value="Numero Remisión:" style="width:96%" />
+                                </div>
+                                <div class="ui-grid-col-3">
+                                    <p:inputText  style="width: 100%" value="#{historialVentasController.filtroVenta.numeroRemision}">
+                                    </p:inputText>
+                                </div>
+                            </h:panelGroup>
+                            <h:panelGroup rendered="#{historialVentasController.filtroVenta.tipoVentaDto.id eq 3}">
+                                <div class="ui-grid-col-2 text-right">
+                                    <p:outputLabel value="Numero Factura:" style="width:96%" />
+                                </div>
+                                <div class="ui-grid-col-3">
+                                    <p:inputText  style="width: 100%" value="#{historialVentasController.filtroVenta.numeroFactura}">
+                                    </p:inputText>
+                                </div>
+                            </h:panelGroup>
+                        </div>
+                    </div>
+                    <div class="ui-grid ui-grid-responsive">
+                        <div class="ui-grid-row"> 
+                            <div class="ui-grid-col-2 text-right">
+                                <p:outputLabel value="Fecha" style="width:96%" />
+                            </div>
+                            <div class="ui-grid-col-2 text-right">
+                                <p:outputLabel value="Inicio:" style="width:96%" />
+                            </div>
+                            <div class="ui-grid-col-2">
+                                <p:calendar showOn="button" value="#{historialVentasController.filtroVenta.fechaInicio}" >
+                                    <p:ajax event="dateSelect" update="fechaFin" />
+                                </p:calendar>
+                            </div>
+                            <div class="ui-grid-col-2 text-right">
+                                <p:outputLabel value="Fin:" style="width:96%" />
+                            </div>
+                            <div class="ui-grid-col-2">
+                                <p:calendar id="fechaFin" showOn="button" value="#{historialVentasController.filtroVenta.fechaFin}"/>
                             </div>
                         </div>
-                    </div>                   
+                    </div>
+                    <div class="ui-grid ui-grid-responsive">
+                        <div class="ui-grid-row"> 
+                            <div class="ui-grid-col-2 text-right">
+                                <p:outputLabel value="Fecha Vencimiento" style="width:96%" />
+                            </div>
+                            <div class="ui-grid-col-2 text-right">
+                                <p:outputLabel value="Inicio:" style="width:96%" />
+                            </div>
+                            <div class="ui-grid-col-2">
+                                <p:calendar showOn="button" value="#{historialVentasController.filtroVenta.fechaInicioVencimiento}" >
+                                    <p:ajax event="dateSelect" update="fechaFinV" />
+                                </p:calendar>
+                            </div>
+                            <div class="ui-grid-col-2 text-right">
+                                <p:outputLabel value="Fin:" style="width:96%" />
+                            </div>
+                            <div class="ui-grid-col-2">
+                                <p:calendar id="fechaFinV" showOn="button" value="#{historialVentasController.filtroVenta.fechaFinVencimiento}"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ui-grid ui-grid-responsive">
+                        <div class="ui-grid-row">
+                            <div class="ui-grid-col-12 text-right" >
+                                <p:commandButton value="Limpiar" id="cleanVenta" update=":form"
+                                                 icon="fa fa-eraser" iconPos="left" styleClass="btn btn-sm btn-warning"
+                                                 actionListener="#{historialVentasController.init()}"/> 
+                                <p:commandButton value="Buscar" id="filtrarVenta" update="tblHistorial"
+                                                 icon="fa fa-search" iconPos="left" styleClass="btn btn-sm btn-info"
+                                                 actionListener="#{historialVentasController.buscar()}"/> 
+                            </div>
+                        </div>
+                    </div>
                 </p:panel>
                 <p:panel id="panelDetalle">
                     <div class="ui-grid ui-grid-responsive">
                         <div class="ui-grid-row">
                             <div class="ui-grid-col-12" >
                                 <p:dataTable id="tblHistorial" widgetVar="facturaTable"  
-                                             value="#{historialVentasController.ventas}" var="venta" >
+                                             value="#{historialVentasController.ventas}" var="venta" 
+                                             paginator="true"
+                                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                             rows="20">
                                     <p:column headerText="Tipo Venta">
                                         <h:outputText value="#{venta.tipoVentaDto.descripcion}" style="width:96%" />
                                     </p:column>
@@ -36,31 +124,35 @@
                                         <h:outputText value="#{venta.tipoPagoDto.descripcion}" style="width:96%" />
                                     </p:column>
                                     <p:column headerText="Fecha">
-                                        <h:outputText value="#{venta.fechaFactura}" style="width:96%" />
+                                        <h:outputText value="#{venta.fechaFactura}" style="width:96%" >
+                                            <f:convertDateTime pattern="dd-MM-yyyy" />
+                                        </h:outputText>
                                     </p:column>
                                     <p:column headerText="Fecha Vencimiento">
-                                        <h:outputText value="#{venta.fechaVencimiento}" style="width:96%" />
+                                        <h:outputText value="#{venta.fechaVencimiento}" style="width:96%" >
+                                            <f:convertDateTime pattern="dd-MM-yyyy" />
+                                        </h:outputText>
                                     </p:column>
                                     <p:column headerText="Total Iva">
-                                        <h:outputText value="#{venta.totalIva}" style="width:96%" />
+                                        <h:outputText value="#{venta.totalIva}" style="width:96%" >
+                                            <f:convertNumber pattern="###,###" currencySymbol="$" type="currency"/>
+                                        </h:outputText>
                                     </p:column>
                                     <p:column headerText="Total">
-                                        <h:outputText value="#{venta.total}" style="width:96%" />
-                                    </p:column>
-                                    <p:column headerText="Total">
-                                        <h:outputText value="#{venta.total}" style="width:96%" />
+                                        <h:outputText value="#{venta.total}" style="width:96%" >
+                                            <f:convertNumber pattern="###,###" currencySymbol="$" type="currency"/>
+                                        </h:outputText>
                                     </p:column>
                                     <p:column headerText="Imprimr" class="text-center">
-                                        <h:commandButton  title="Imprimir" rendered="#{venta.tipoVentaDto.id ne 1}"
-                                                          actionListener="#{historialVentasController.imprimePdf(false, venta)}">
-                                            <i class="fa fa-print"></i> 
-                                        </h:commandButton>
-                                        <h:commandButton  title="Imprimir Copia" style="background-color: #FAAC58; 
-                                                          margin-left: 10px;color: #FFFFFF" rendered="#{venta.tipoVentaDto.id ne 1}"
-                                                          actionListener="#{historialVentasController.imprimePdf(true, venta)}">
-                                            <i class="fa fa-print"></i> 
-                                        </h:commandButton>                                        
-                                       
+                                        <p:commandButton  title="Imprimir" rendered="#{venta.tipoVentaDto.id ne 1}" styleClass="btn btn-sm btn-success"
+                                                          actionListener="#{historialVentasController.imprimePdf(false, venta)}"
+                                                          icon="fa fa-print" ajax="false">                                            
+                                        </p:commandButton>
+                                        <p:commandButton  title="Copia" rendered="#{venta.tipoVentaDto.id eq 3}"
+                                                          actionListener="#{historialVentasController.imprimePdf(true, venta)}"
+                                                          icon="fa fa-print" ajax="false" styleClass="btn btn-sm btn-warning"
+                                                          style="margin-left: 10px">                                            
+                                        </p:commandButton>                                        
                                     </p:column>
                                 </p:dataTable>
                             </div>

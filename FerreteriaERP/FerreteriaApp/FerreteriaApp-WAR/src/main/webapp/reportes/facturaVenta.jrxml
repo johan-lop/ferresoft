@@ -534,9 +534,9 @@ Régimen Común]]></text>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="7" isBold="false"/>
 				</textElement>
-				<text><![CDATA[Resolución DIAN No. 320001061677
-Fecha: 2013/09/23
-Num. Autorizada del 3501 al 6000]]></text>
+				<text><![CDATA[Resolución DIAN No. 320001326656
+Fecha: 2016/10/23
+Num. Autorizada del 6001 al 7500]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="60" y="72" width="129" height="14" uuid="7e00c358-f42c-41f6-93ff-02afca695b1a"/>
