@@ -1,0 +1,9 @@
+/home/johan/NetBeansProjects/Ferresoft/FerreteriaERP/FerreteriaApp/FerreteriaApp-WAR/src/main/java/com/co/ferreteria/controller/ventas/HistorialVentasController.java
+/home/johan/NetBeansProjects/Ferresoft/FerreteriaERP/FerreteriaApp/FerreteriaApp-WAR/src/main/java/com/co/ferreteria/controller/comun/ClienteController.java
+/home/johan/NetBeansProjects/Ferresoft/FerreteriaERP/FerreteriaApp/FerreteriaApp-WAR/src/main/java/com/co/ferreteria/facade/ventas/VentasFacade.java
+/home/johan/NetBeansProjects/Ferresoft/FerreteriaERP/FerreteriaApp/FerreteriaApp-WAR/src/main/java/com/co/ferreteria/facade/parametros/ParametrosFacade.java
+/home/johan/NetBeansProjects/Ferresoft/FerreteriaERP/FerreteriaApp/FerreteriaApp-WAR/src/main/java/com/co/ferreteria/facade/producto/ProductoFacade.java
+/home/johan/NetBeansProjects/Ferresoft/FerreteriaERP/FerreteriaApp/FerreteriaApp-WAR/src/main/java/com/co/ferreteria/controller/ventas/VentaController.java
+/home/johan/NetBeansProjects/Ferresoft/FerreteriaERP/FerreteriaApp/FerreteriaApp-WAR/src/main/java/com/co/ferreteria/controller/compras/CompraController.java
+/home/johan/NetBeansProjects/Ferresoft/FerreteriaERP/FerreteriaApp/FerreteriaApp-WAR/src/main/java/com/co/ferreteria/controller/producto/EditarProductoController.java
+/home/johan/NetBeansProjects/Ferresoft/FerreteriaERP/FerreteriaApp/FerreteriaApp-WAR/src/main/java/com/co/ferreteria/controller/parametros/MenuController.java

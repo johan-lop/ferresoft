@@ -1,0 +1,210 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 20/11/2014, 10:56:25 AM
+    Author     : dcuellar
+*/
+
+/* Base */
+body {
+    font-family: 'PT Sans', serif;
+}
+
+.ui-toolbar {
+    -webkit-border-bottom-left-radius: 0px;
+    -webkit-border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+/* PROGRAMACION AUDITORIA */
+.value {
+    width: 2000px;
+}
+
+.agendaEnCurso, .agendaFinalizada {
+    background-image: none;
+    background-color: #FCBB76 !important;
+    color: #111 !important;
+}
+
+.agendaFinalizada {
+    background-color: #57b5e3 !important;
+}
+
+.convencionCita {
+    height: 15px;
+    width: 15px;
+    float: left;
+    margin-right: 8px;
+}
+
+.fc-event-title {
+    font-weight: normal !important;
+    line-height: 12px !important;
+}
+
+.sameWidthCol {
+    width: 33.33%;
+}
+
+.anchoInput, .anchoInput ul, .anchoInput input.ui-autocomplete-input {
+    width: 100% !important;
+}
+
+.estiloLabels {
+    font-weight: bold;
+}
+
+#j_idt23 {
+    font-size: 14px;
+}
+
+div[id*="auditores_itemtip"], div[id*="progSelectAuditor_itemtip"] {
+    width: 12% !important;
+}
+
+.espaciado-inputs {
+    padding: 10%;
+}
+
+.convencionCita {
+    height: 15px;
+    width: 15px;
+    float: left;
+    margin-right: 8px;
+}
+
+table[id*="tiposAuditoriaConsulta"] tbody tr td label {
+    margin-left: 10px;
+    margin-right: 40px;
+}
+
+.tdtotales {
+    padding: 1px !important;
+}
+
+.trtotales {
+    border-style: hidden;
+}
+
+table[id*="coordinacion"] tbody tr td {
+    padding-right: 7%;
+}
+
+span[id*="fechaInicioAuditoria"] {
+    padding-left: 20px;
+}
+
+select[id*="repetirCadaDia"] {
+    margin-left: 15px;
+}
+
+/*********************
+/* DETALLE PRESTADOR *
+*********************/
+
+.divCombosDetalle {
+    width: 23%;
+    float: left;
+}
+
+.combosDetalle {
+    width: 90%;
+}
+
+.ui-selectcheckboxmenu-trigger ui-state-default ui-corner-right {
+    width: 23px !important;
+}
+
+/****************
+/* GESTION IPS */
+/***************/
+.gridCenter {
+    margin: auto;
+}
+
+.gridAlignRigh {
+    text-align: right;
+}
+
+.gridNoBorder {
+    width: 100%;
+}
+
+.gridNoBorder td, .gridNoBorder tr {
+    border-style: none !important;
+}
+
+.columStylesIps {
+    width: 5px;
+}
+
+.panelGrid, .panelGridFiltro {
+    border-collapse: separate;
+    border-spacing: 7px;
+    border-width: 0 !important;
+    padding: 0 !important;
+}
+
+.panelGridFiltro {
+    margin: 10px auto;
+    border-spacing: 10px 0px;
+}
+
+.ui-icon, .ui-icon-triangle-1-e {
+    display: block;
+}
+
+.ui-panel {
+    margin-bottom: 5px;
+    box-shadow: 2px 1px 5px #999;
+    border-radius: 0px;
+}
+
+#fechaInicioAuditoria {
+    width: 95% !important;
+}
+
+td.ui-widget-content.ui-state-highlight.fc-today {
+    background: #eee !important;
+    color: #333 !important;
+}
+
+.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-only.btn.btn-sm.btn-info,
+.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-icon-left.btn.btn-sm.btn-info {
+    background: #57b5e3 !important;
+}
+
+.buttons-filter {
+    width: 400px;
+    margin: 10px auto;
+}
+
+tr.ui-widget-content:hover {
+    background: #eee;
+}
+
+.ui-paginator-page.ui-state-default.ui-corner-all.ui-state-active {
+    background: #57b5e3;
+    color: #fff;
+}
+
+h3.ui-accordion-header {
+    color: #00798D !important;
+}
+
+li.ui-autocomplete-token.ui-state-active span.ui-icon-close {
+    left: 0.2em
+}
+
+li.ui-autocomplete-token.ui-state-active span.ui-autocomplete-token-label {
+    padding: 0em 0.5em 0em 1.3em !important;
+}
+.float-right{
+    
+    float: right;
+}
